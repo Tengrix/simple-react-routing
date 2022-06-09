@@ -1,26 +1,31 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
+import Routings from './components/Routings/Routings';
+import RoutingWithoutUsingLib from './components/routing_without_library/Routing/RoutingWithoutUsingLib';
+import RoutingWithUsingLib from './components/routing_with_react_router_dom/RoutingWithUsingLib';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <Router>
+            <div className="App">
+                <Link to='/routingWithoutUsingLibrary'>
+                    RoutingWithoutUsingLibrary
+                </Link>
+                <Link to='/routingWithUsingLibrary'>
+                    RoutingWithUsingLibrary
+                </Link>
+                <Switch>
+                    <Route path={'/routingWithoutUsingLibrary'}>
+                        <RoutingWithoutUsingLib/>
+                    </Route>
+                    <Route path={'/routingWithUsingLibrary'}>
+                        <RoutingWithUsingLib/>
+                    </Route>
+                </Switch>
+            </div>
+        </Router>
+    );
 }
 
 export default App;
